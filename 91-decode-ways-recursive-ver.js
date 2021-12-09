@@ -28,10 +28,13 @@
 };
 
 function helper(data, k, memo) {
+    // k is the number of chars I'm looking at after
+    // the 0th index
     if (k==0) {
         return 1;
     }
     
+    // s is for the idx of data
     let s = data.length - k;
     if (data[s] == '0') {
         return 0;
