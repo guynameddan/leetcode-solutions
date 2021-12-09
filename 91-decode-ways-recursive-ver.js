@@ -22,6 +22,12 @@
     //////////////////////////////
     //      recursive method    //
     //////////////////////////////
+
+    const memo = Array(s.length+1).fill(0)
+    return helper(s, s.length, memo)
+};
+
+function helper(data, k, memo) {
     if (k==0) {
         return 1;
     }
@@ -42,4 +48,4 @@
 
     memo[k] = result;
     return result;
-};
+}
