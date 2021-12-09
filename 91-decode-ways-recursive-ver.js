@@ -20,30 +20,26 @@
  */
  var numDecodings = function(s) {
     //////////////////////////////
-    //  non-recursive method    //
+    //      recursive method    //
     //////////////////////////////
-    // if (s[0] === '0') {
-    //     return 0
-    // }
+    if (k==0) {
+        return 1;
+    }
     
-    // const howManyDecodes = Array(s.length + 1).fill(0)
-        
-    // // base cases
-    // howManyDecodes[0] = 1
-    // howManyDecodes[1] = 1
+    let s = data.length - k;
+    if (data[s] == '0') {
+        return 0;
+    }
     
-    // for (let i = 2; i <= s.length; i++) {
-    //     const single = s.slice(i-1, i);
-    //     const double = s.slice(i-2, i);
-        
-    //     if (single > 0) {
-    //         howManyDecodes[i] = howManyDecodes[i-1];
-    //     }
-        
-    //     if (double >= 10 && double <= 26) {
-    //         howManyDecodes[i] += howManyDecodes[i-2];
-    //     }
-    // }
+    if (memo[k] != 0) {
+        return memo[k];
+    }
     
-    // return howManyDecodes[s.length]
+    let result = helper(data, k - 1, memo);
+    if (k >= 2 && data.slice(s, s+2) <= 26) {
+        result += helper(data, k - 2, memo)
+    }
+
+    memo[k] = result;
+    return result;
 };
