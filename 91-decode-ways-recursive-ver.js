@@ -28,8 +28,8 @@
 };
 
 function helper(data, k, memo) {
-    // k is the number of chars I'm looking at after
-    // the 0th index
+    // k is the number of chars I'm looking at from
+    // the end
     if (k==0) {
         return 1;
     }
