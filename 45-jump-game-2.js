@@ -18,6 +18,37 @@
 //  Output: 2
 //  Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
 
- var jump = function(nums) {
 
+// Greedy Method
+// Consider ranges with pointers, newMax and oldMax, the end and beginning pointers of a range, respectively.
+// Loops through each index until the end to find the largest jump possible between newMax and i + nums[i].
+// Whenever newMax updates it's the end of the new range
+// Whenever oldMax updates it's the start of the new range
+// For Example:
+// [2,       3,   1,        1,     4]
+// |__|      |____|         |______|
+//  old          new
+//  
+// then:
+//               new
+//               old               
+// then:
+//                old              new
+// then:
+//                                 new
+//                                 old
+var jump = function(nums) {
+    let newMax = 0;
+    let jump = 0;
+    let oldMax = 0;
+    for (let i = 0;i < nums.length - 1;i++) {
+        // Keep track of the farthest jump
+        newMax = Math.max(newMax, i + nums[i]);
+        // When we get to the index where we had our previous farthest jump, we increase our jump count by 1
+        if (i == oldMax) {
+            jump++;
+            oldMax = newMax;
+        }
+    }
+    return jump;
  }
