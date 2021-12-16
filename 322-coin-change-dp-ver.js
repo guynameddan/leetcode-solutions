@@ -18,6 +18,7 @@
 //     Output: 3
 //     Explanation: 11 = 5 + 5 + 1
 
+// dynamic programming version
  var coinChange = function(coins, amount) {
     let dp = new Array(amount + 1).fill(amount + 1);
     dp[0] = 0;
