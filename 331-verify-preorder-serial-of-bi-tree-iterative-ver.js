@@ -60,3 +60,20 @@
     // else return false;
     return counter == 0;
 };
+
+// another iterative version
+var isValidSerialization = function(preorder) {  
+    if(preorder.length===0) return false;
+    
+    let vacancy = 1;
+    
+    for(let node of preorder.split(',')){
+        --vacancy;
+
+        if(vacancy<0) return false;
+
+        if(node !== '#') vacancy+=2;
+    }
+    
+    return vacancy === 0;
+};
