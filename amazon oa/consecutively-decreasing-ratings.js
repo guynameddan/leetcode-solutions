@@ -46,6 +46,9 @@ decrease is 1 + the index range between the two. Let's increment the right point
 and leave the left alone. 3 is less than 4 so it's still decreasing. We know since it's
 still decreasing everything before is decreasing too and therefore can be a part of the
 sequence i.e. right pointer - left pointer + 1 (for itself).
+
+lessons learned: I tried using slice js method. If I want to consider subarrays then I
+can just use two pointers.
 */
 function periodsOfDecreaseRating(ratings) {
     let total = 0,

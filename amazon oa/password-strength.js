@@ -21,4 +21,9 @@ Output: 10
 
 Given a function description:
 public static long findPasswordStrength(String password);
+
+
+solution: https://leetcode.com/discuss/interview-question/1526418/Count-strength-of-pa%20%20ssword-or-amazon
+https://leetcode.com/discuss/interview-question/1594897/Amazon-OA-questions-Find-password-strength
+
 */
