@@ -42,3 +42,41 @@ Explanation: Division at index
 - 2: numsleft is [1,1]. numsright is []. The score is 0 + 0 = 0.
 Only index 0 has the highest possible division score 2.
  */
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ var maxScoreIndices = function(nums) {
+    let left = [0],
+        right = new Array(nums.length + 1),
+        zeroCount = 0,
+        oneCount = 0,
+        max = -Infinity,
+        result = [];
+    
+    right[nums.length] = 0;
+    
+    for (let i = 0, j = nums.length - 1 - i; i < nums.length; i++, j--) {
+        if (nums[i] === 0) left.push(++zeroCount);
+        else left.push(zeroCount);
+        
+        if (nums[j] === 1) right[j] = ++oneCount;
+        else right[j] = oneCount;
+    }
+    
+    let sum = left.map(function (num, idx) {
+        return num + right[idx];
+    });
+    
+    for (let i = 0; i < sum.length; i++) {
+        if (sum[i] > max) {
+            result = [];
+            max = sum[i];
+            result.push(i);
+        } else if (sum[i] === max) {
+            result.push(i);
+        }
+    }
+    
+    return result;
+};
