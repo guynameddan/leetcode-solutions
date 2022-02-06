@@ -28,36 +28,29 @@ function TreeNode(val) {
   }
   
   function visibleNodes(root) {
-  // BFS
-  // We don't have to care whether or not the leftmost node
-  // is on the left or right. All we have to do is count the
-  // number of levels in the tree. Therefore, use BFS.
-    
+    // BFS
+    // We don't have to care whether or not the leftmost node
+    // is on the left or right. All we have to do is count the
+    // number of levels in the tree. Therefore, use BFS.
+      
     let queue = [root],
         count = 0;
-    
+  
     // implement FIFO
     while (queue.length > 0) {
-      //for(let i = 0; i < queue.length; i++)
       let len = queue.length;
-      
-      /**
-      []
-      */
-      
+  
       for (let i = 0; i < len; i++) {
         let currentNode = queue.shift();
-        
+  
         if(currentNode.left) queue.push(currentNode.left);
         if(currentNode.right) queue.push(currentNode.right);
       }
-      
+  
       count++;
   
     }
-    
-    return count;
-    
+    return count;  
   }
   
   
