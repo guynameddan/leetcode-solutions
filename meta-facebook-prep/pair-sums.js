@@ -24,37 +24,80 @@ arr = [1, 5, 3, 3, 3]
 output = 4
 There's one valid pair 1+5, and three different valid pairs 3+3 (the 3rd and 4th elements, 3rd and 5th elements, and 4th and 5th elements).
  */
-function numberOfWays(arr, k) {
-    let numMap = new Map(),
-        visited = new Set();
-        diff = 0,
-        count = 0;
-    
-    for (let i = 0; i < arr.length; i++) {
-      if (numMap.get(arr[i]) !== i) {
-        numMap.set(arr[i], i);
-      }
-    }
-    
-    for (let i = 0; i < arr.length; i++) {
-      diff = k - arr[i];
-      
-      if (numMap.has(arr[i]) && !visited.has([i, numMap.get(arr[i])]) && !visited.has([numMap.get(arr[i]), i])) {
-        count++;
-        visited.add([i, numMap.get(arr[i])]);
-        visited.add([numMap.get(arr[i]), i]);
-      }
-    }
+// Add any extra import statements you may need here
 
-    console.log(numMap);
-    console.log(visited);
-    
-    return count;
+
+// Add any helper functions you may need here
+
+
+function numberOfWays(arr, k) {
+  let result = 0,
+      numCount = 0,
+      numMap = new Map(),
+      diff = 0;
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (numMap.has(arr[i])) {
+      numCount = numMap.get(arr[i]);
+      numMap.set(arr[i], ++numCount);
+    } else {
+      numMap.set(arr[i], 1);
+    }
+  }
+  
+  for (let [num, count] of numMap) {
+    diff = k - num;
+        
+    if (numMap.has(diff)) {
+      if (diff === num) {
+        result += count * (count - 1);
+      } else {
+        result += count * numMap.get(diff);
+      }
+    }
+  }
+  
+  return result / 2;
+}
+
+// These are the tests we use to determine if the solution is correct.
+// You can add your own at the bottom.
+function printInteger(n) {
+  var out = '[' + n + ']';
+  return out;
+}
+
+var test_case_number = 1;
+
+function check(expected, output) {
+  var result = (expected == output);
+  var rightTick = "\u2713";
+  var wrongTick = "\u2717";
+  if (result) {
+    var out = rightTick + ' Test #' + test_case_number;
+    console.log(out);
+  }
+  else {
+    var out = '';
+    out += wrongTick + ' Test #' + test_case_number + ': Expected ';
+    out += printInteger(expected);
+    out += ' Your output: ';
+    out += printInteger(output);
+    console.log(out);
+  }
+  test_case_number++;
 }
 
 var k_1 = 6;
 var arr_1 = [1, 2, 3, 4, 3];
 var expected_1 = 2;
 var output_1 = numberOfWays(arr_1, k_1);
+check(expected_1, output_1);
 
-console.log(output_1);
+var k_2 = 6;
+var arr_2 = [1, 5, 3, 3, 3];
+var expected_2 = 4;
+var output_2 = numberOfWays(arr_2, k_2);
+check(expected_2, output_2);
+
+// Add your own test cases here
