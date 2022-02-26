@@ -21,6 +21,7 @@ In the second minute you can eat 4 pieces of candy from another bag. That bag wi
 In the third minute you can eat the 3 pieces of candy that have appeared in the first bag that you ate.
 In total you can eat 7 + 4 + 3 = 14 pieces of candy.
  */
+// time complexity O(logN)
 function heapify(arr, heapSize, root) {
     let largest = root,
         leftChild = 2 * root + 1,
@@ -49,12 +50,14 @@ function heapify(arr, heapSize, root) {
         totalCandy = 0;
     
     // build heap (i.e. rearrange array)
+    // time complexity O(NlogN)
     for (let i = Math.floor(heapSize/2) - 1; i >= 0; i--) {
       heapify(arr, heapSize, i);
     }
     
     // get max value, half it, then heapfiy from root, and repeat
     // til' k/minutes is 0
+    // time complexity O(k*log(N))
     for (let minutes = k; minutes > 0; minutes--) {
       totalCandy += arr[0];
       
