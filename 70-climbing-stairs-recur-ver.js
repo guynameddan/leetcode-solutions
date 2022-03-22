@@ -10,7 +10,7 @@
     function recur(target, memo) {
         if (target < 0) return 0;
         if (memo[target]) return memo[target];
-        if (target == 0) return 1;
+        if (target === 0) return 1;
         
         let ways = 0;
         
