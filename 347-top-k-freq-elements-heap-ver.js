@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/top-k-frequent-elements/
 /**
  * @param {number[]} nums
  * @param {number} k
@@ -73,6 +74,7 @@ var topKFrequent = function(nums, k) {
     
     // Build hashmap
     // [key, value] => [integer of nums, integer's frequency]
+    // O(N)
     for (let num of nums) {
         if (!counts.has(num)) {
             counts.set(num, 1);
@@ -87,12 +89,17 @@ var topKFrequent = function(nums, k) {
             
     let maxHeap = new binHeap();
     
+    // Insert costs O(LogN) and you're doing this N times.
+    // So creating the max heap is O(NLogN)
     for (let [num, count] of counts) {        
         let swapped = [count, num];
         
         maxHeap.insert(swapped);
     }
     
+    // O(k) number of calls to get max. Getting the max is O(1) but, removing
+    // the max and re-heapifying costs O(LogN). Therefore, total time
+    // complexity for this for loop is O(kLogN).
     for (let i = 0; i <= k; i++) {
         if (result.length === k) return result;
         
@@ -101,4 +108,6 @@ var topKFrequent = function(nums, k) {
         result.push(currMax[1]);
     }
     
+    // Total time complexity = O(N) + O(NLogN) + O(kLogN) = O(NLogN)
+    // 
 };
