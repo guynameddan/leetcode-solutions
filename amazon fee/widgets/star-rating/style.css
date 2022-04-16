@@ -1,8 +1,78 @@
-.rating {
+/* version 1 */
+.rating-v1 {
     width: 250px;
 }
 
 .rating__star {
     cursor: pointer;
     color: #dabd18b2;
+}
+
+/* version 2 */
+
+.rating-v2 {
+    display: flex;
+    width: 350px;
+    flex-direction: row-reverse;
+}
+
+.star {
+}
+
+.star:before {
+    content: "\f005";
+    font-family: fontAwesome;
+    font-size: 60px;
+    position: relative;
+    display: block;
+    color: #aaa;
+  }
+  
+.star:after {
+    content: "\f005";
+    font-family: fontAwesome;
+    position: absolute;
+    top: 223px;
+    font-size: 60px;
+    color: gold;
+    opacity: 0;
+}
+.star:hover:after,
+.star:hover ~ .star:after,
+.star.star__checked:after,
+.star.star__checked ~ .star:after{
+    opacity: 1;
+}
+
+/* version 3 */
+
+.ratingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.rating-v3 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.star-v3 {
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+    margin: 4px;
+}
+
+.star-v3:hover,
+.star-v3:hover ~ .star-v3 {
+    background-color: gold;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: gold;
 }

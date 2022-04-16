@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <div class="rating">
+        <div class="rating-v1">
             <h2>Using Font Awesome</h2>
             <p>Uses HTML, CSS, & JavaScript</p>
             <i class="rating__star far fa-star"></i>
@@ -15,6 +15,31 @@
             <i class="rating__star far fa-star"></i>
             <i class="rating__star far fa-star"></i>
             <i class="rating__star far fa-star"></i>
+        </div>
+
+        <h2>With Hover and Grey</h2>
+        <p>
+            Uses 2 sets of 5 stars. Gold overlaps the grey ones. Uses HTML, CSS, and JavaScript
+        </p>
+        <div class="rating-v2">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        <h2 class="rating">0/5</h2>
+
+        <h1>Version 3</h1>
+        <div class="ratingContainer">
+            <div class="rating-v3">
+                <div data-rating="5" class="star-v3"></div>
+                <div data-rating="4" class="star-v3"></div>
+                <div data-rating="3" class="star-v3"></div>
+                <div data-rating="2" class="star-v3"></div>
+                <div data-rating="1" class="star-v3"></div>
+            </div>
+            <div class="ratingResult"></div>
         </div>
 
         <script src="./index.js"></script>
